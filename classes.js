@@ -14,7 +14,8 @@ var __extends = (this && this.__extends) || (function () {
     };
 })();
 var Vehicle = /** @class */ (function () {
-    function Vehicle() {
+    function Vehicle(color) {
+        this.color = color;
     }
     Vehicle.prototype.honk = function () {
         console.log("Beep Beep! Who got the keys to the Jeep?!");
@@ -24,8 +25,10 @@ var Vehicle = /** @class */ (function () {
 ;
 var Car = /** @class */ (function (_super) {
     __extends(Car, _super);
-    function Car() {
-        return _super !== null && _super.apply(this, arguments) || this;
+    function Car(wheels, color) {
+        var _this = _super.call(this, color) || this;
+        _this.wheels = wheels;
+        return _this;
     }
     Car.prototype.drive = function () {
         console.log("VROOM! VROOM! VROOM!");
@@ -38,10 +41,11 @@ var Car = /** @class */ (function (_super) {
     return Car;
 }(Vehicle));
 ;
-var vehicle = new Vehicle();
+var vehicle = new Vehicle('green');
 //protected - can only be called by class and child class
 //vehicle.honk();
-var car = new Car();
+console.log(vehicle.color);
+var car = new Car(4, 'blue');
 //protected - can only be called by class and child class
 //car.honk();
 car.startTheDrivingProcess();
